@@ -44,7 +44,6 @@ companionCollection.Remove(fileCompanion);
 
 Backup an item.
 ```csharp
-// Export
 var json = container.GetJsonObject(); // JObject of the entire save
 var format = libNOM.collect.Enums.FormatEnum.Kaii; // one of the supported formats (depends on collection type)
 var path = "..."; // where the collection is stored
