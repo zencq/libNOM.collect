@@ -259,7 +259,6 @@ public class BaseCollection : Collection
 
 /// <summary>
 /// ...
-/// Note: NMS Base supports up to 6 previews/thumbnails.
 /// </summary>
 public class Base : CollectionItem
 {
@@ -417,7 +416,12 @@ public class Base : CollectionItem
             { "Galaxy", galacticAddress.GetGalaxy() },
             { "GlyphsString", galacticAddress.GetGlyphsString() },
             { nameof(Starred), Starred },
-            { "Thumbnail", Preview },
+            { "Thumbnail", Preview?.ToBase64String() },
+            { "Thumbnail2", Preview2?.ToBase64String() },
+            { "Thumbnail3", Preview3?.ToBase64String() },
+            { "Thumbnail4", Preview4?.ToBase64String() },
+            { "Thumbnail5", Preview5?.ToBase64String() },
+            { "Thumbnail6", Preview6?.ToBase64String() },
         };
 
         // Return

@@ -38,6 +38,16 @@ public abstract class CollectionItem
 
     public byte[]? Preview { get; set; }
 
+    public byte[]? Preview2 { get; set; }
+
+    public byte[]? Preview3 { get; set; }
+
+    public byte[]? Preview4 { get; set; }
+
+    public byte[]? Preview5 { get; set; }
+
+    public byte[]? Preview6 { get; set; }
+
     public bool Starred { get; set; } // = false;
 
     // //
@@ -165,7 +175,12 @@ public abstract class CollectionItem
             { nameof(DateCreated), DateCreated.ToUniversalTime() },
             { nameof(Description), Description },
             { "FileVersion", 2 },
-            { nameof(Preview), Preview.ToBase64String() },
+            { nameof(Preview), Preview?.ToBase64String() },
+            { nameof(Preview2), Preview2?.ToBase64String() },
+            { nameof(Preview3), Preview3?.ToBase64String() },
+            { nameof(Preview4), Preview4?.ToBase64String() },
+            { nameof(Preview5), Preview5?.ToBase64String() },
+            { nameof(Preview6), Preview6?.ToBase64String() },
             { nameof(Starred), Starred },
         };
 

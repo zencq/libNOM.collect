@@ -200,7 +200,25 @@ public class ByteBeat : CollectionItem
             { "OriginalAuthorPlatform", Data["Song"]!.SelectToken("d2f")!.Value<string>() },
             { "OriginalName", Data["Song"]!.SelectToken("NKm")!.Value<string>() },
             { nameof(Starred), Starred },
-            { "Track", Preview },
+            { "Track", Preview?.ToBase64String() },
+        };
+
+        // Return
+        return result.Serialize().GetBytes();
+    }
+
+    protected override byte[] ExportStandard()
+    {
+        // Prepare
+        Obfuscate();
+        var result = new Dictionary<string, object?>
+        {
+            { nameof(Data), Data },
+            { nameof(DateCreated), DateCreated.ToUniversalTime() },
+            { nameof(Description), Description },
+            { "FileVersion", 2 },
+            { nameof(Preview), Preview?.ToBase64String() },
+            { nameof(Starred), Starred },
         };
 
         // Return

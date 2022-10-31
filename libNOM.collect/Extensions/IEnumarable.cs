@@ -51,11 +51,8 @@ internal static class IEnumarableExtensions
         return self.Count.ToString("D3");
     }
 
-    internal static string? ToBase64String(this byte[]? self)
+    internal static string ToBase64String(this byte[] self)
     {
-        if (self is null)
-            return null;
-
         return Convert.ToBase64String(self);
     }
 }

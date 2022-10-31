@@ -137,7 +137,6 @@ public class StarshipCollection : Collection
 
 /// <summary>
 /// ...
-/// Note: NMS Companion supports up to 6 previews/thumbnails.
 /// </summary>
 public class Starship : CollectionItem
 {
@@ -286,7 +285,12 @@ public class Starship : CollectionItem
             { "Colours", Data["Colours"] }, // custom addition by Mjstral (MetaIdea)
             { nameof(Description), Description },
             { "FileVersion", 1 },
-            { "Thumbnail", Preview },
+            { "Thumbnail", Preview?.ToBase64String() },
+            { "Thumbnail2", Preview2?.ToBase64String() },
+            { "Thumbnail3", Preview3?.ToBase64String() },
+            { "Thumbnail4", Preview4?.ToBase64String() },
+            { "Thumbnail5", Preview5?.ToBase64String() },
+            { "Thumbnail6", Preview6?.ToBase64String() },
         };
 
         // Return
