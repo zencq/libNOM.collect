@@ -1,68 +1,92 @@
 name: libNOM.collect
 
 on:
-  push
+  pull_request:
+    branches: [ master ]
+  push:
+    branches: [ master ]
+  create:
+
+env:
+  dotnet: 8.0.x
 
 jobs:
-  build:
-    name: Build and Test
-    runs-on: ubuntu-latest
-    env:
-      libNOMmap: '0.8.3'
+  test:
+    name: Test
+    strategy:
+      matrix:
+        # November, 2024 / May, 2024 / November, 2026
+        framwork: [net6.0, net7.0, net8.0]
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: ${{ env.dotnet }}
           dotnet-quality: ga
-      # TODO: Remove when pushing libNOM.map to nuget.org
-      - name: Download libNOM.map
-        uses: Legion2/download-release-action@v2.1.0
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cache
+        uses: actions/cache@v4
         with:
-          repository: zencq/libNOM.map
-          tag: ${{ env.libNOMmap }}
-          path: nupkg
-          file: libNOM.map.${{ env.libNOMmap }}.nupkg
-      # TODO: Update to 'dotnet restore' when pushing libNOM.map to nuget.org
-      - name: Dependencies
-        run: dotnet restore -s ./nupkg -s https://api.nuget.org/v3/index.json
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
       - name: Unit Test
-        run: dotnet test libNOM.test --no-restore --configuration Debug --framework net6.0
-      - name: Pack
-        run: dotnet pack libNOM.collect --no-restore --configuration Release
-      - name: Upload
-        uses: actions/upload-artifact@v3
+        run: dotnet test libNOM.test --configuration Debug --framework ${{ matrix.framwork }}
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          name: libNOM.collect NuGet Package
-          path: libNOM.collect/bin/Release/libNOM.collect.*nupkg
+          dotnet-version: ${{ env.dotnet }}
+          dotnet-quality: ga
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
+      - name: Pack
+        run: dotnet pack libNOM.collect --configuration Release
+      - name: Upload (NuGet)
+        uses: actions/upload-artifact@v4
+        with:
+          name: NuGet
+          path: ./libNOM.collect/bin/Release/libNOM.collect.*nupkg
+          if-no-files-found: error
+      - name: Upload (Release)
+        if: ${{ startsWith(github.ref, 'refs/tags/') }} # only if tagged
+        uses: actions/upload-artifact@v4
+        with:
+          name: Release
+          path: ./.github/changelogs/${{ github.ref_name }}.md
           if-no-files-found: error
   release:
     name: Release
+    if: ${{ startsWith(github.ref, 'refs/tags/') }} # only if tagged
     runs-on: ubuntu-latest
-    # Only if commit was tagged.
-    if: ${{ startsWith(github.ref, 'refs/tags/') }}
-    needs: build
+    needs: [test, build]
     steps:
-      # Checkout again to access the changelog.
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Download
-        uses: actions/download-artifact@v3
-        with:
-          name: libNOM.collect NuGet Package
+        uses: actions/download-artifact@v4
       - name: Version
-        run: echo "nupkg_version=$((((Get-Item -Path .\libNOM.collect.*.nupkg).Name -split '\.',3)[2] -split '\.',-2)[0])" >> $env:GITHUB_ENV
+        run: echo "nupkg_version=$((((Get-Item -Path ./NuGet/libNOM.collect.*.nupkg).Name -split '\.',3)[2] -split '\.',-2)[0])" >> $env:GITHUB_ENV
         shell: pwsh
-      # Exit if version mismatch.
       - name: Mismatch
         if: ${{ github.ref_name != env.nupkg_version }}
         run: |
           echo "There is a version mismatch between git tag (${{ github.ref_name }}) and nupkg version (${{ env.nupkg_version }})!"
           exit 1
       - name: Create
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
-          body_path: ${{ github.workspace }}/.github/changelogs/${{ github.ref_name }}.md
-          files: libNOM.collect.*nupkg
+          body_path: ./Release/${{ github.ref_name }}.md
+          files: ./NuGet/libNOM.collect.*nupkg
+      - name: Publish
+        run: dotnet nuget push ./NuGet/libNOM.collect.*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}

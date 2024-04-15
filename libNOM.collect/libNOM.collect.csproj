@@ -2,36 +2,84 @@
 
   <!-- Application -->
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
   </PropertyGroup>
 
-  <!-- Build -->
-  <PropertyGroup>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <LangVersion>10.0</LangVersion>
-    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-    <Deterministic>True</Deterministic>
-  </PropertyGroup>
+  <!-- Global Usings -->
+	<PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+  <ItemGroup>
+    <Using Include="libNOM.collect.Extensions" />
+  </ItemGroup>
+
+	<!-- Build -->
+	<PropertyGroup Label="General">
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<PropertyGroup Label="Advanced">
+		<LangVersion>12.0</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.1|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.1|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
 
   <!-- Package -->
-  <PropertyGroup>
-    <Version>0.1.0</Version>
-    <Authors>zencq</Authors>
-    <Description>Provides backup and restore functionalities for collections in the game No Man's Sky.</Description>
+	<PropertyGroup Label="General">
+    <Version>0.1.1.1</Version>
+    <Authors>cengelha</Authors>
+    <Description>Provides backup and restore functionalities for all kinds of collections in the game No Man's Sky.</Description>
+		<Copyright>Copyright (c) Christian Engelhardt 2021</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/zencq/libNOM.collect</RepositoryUrl>
-    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+    <PackageTags>NoMansSky;NMS;libNOM</PackageTags>
   </PropertyGroup>
+	<PropertyGroup Label="License">
+		<PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+	</PropertyGroup>
+	<PropertyGroup Label="Symbols">
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<!-- Code Analysis -->
+	<PropertyGroup>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+	</PropertyGroup>
 
   <!-- Source Link -->
   <!-- https://github.com/dotnet/sourcelink/blob/main/README.md#using-source-link-in-net-projects -->
   <PropertyGroup>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <!-- https://github.com/clairernovotny/DeterministicBuilds -->
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
@@ -39,17 +87,24 @@
   </PropertyGroup>
 
   <!-- Dependencies -->
+	<PropertyGroup>
+		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+	</PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="libNOM.map" Version="0.8.3" />
+    <PackageReference Include="libNOM.map" Version="0.9.2" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <!-- Resources -->
   <ItemGroup>
+		<None Include="..\CHANGELOG.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

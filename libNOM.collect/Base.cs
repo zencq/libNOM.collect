@@ -268,7 +268,7 @@ public class Base : CollectionItem
     internal static byte[] GoatfungusFileHeader = new byte[] { 78, 77, 83, 66 }; // 4E 4D 53 42 (NMSB)
     internal static byte[] GoatfungusFileVersion = new byte[] { 0, 4, 0, 0 };
 
-    // Original by goatfungus as signed byte and converted to unsigend to be useable here.
+    // Original by goatfungus as signed byte and converted to unsigned to be useable here.
     // sbyte[] { 50, -99, -78, -55, 92, 88, -34, 74, -57, 17, 57, -108, -94, sbyte.MaxValue, 97, -79 }; // 32 9D B2 C9 5C 58 DE 4A C7 11 39 94 A2 7F 61 B1
     internal static byte[] GoatfungusSecret = new byte[] { 50, 157, 178, 201, 92, 88, 222, 74, 199, 17, 57, 148, 162, 127, 97, 177 };
 

@@ -1,19 +1,22 @@
 # libNOM.collect
 
 ![Maintained](https://img.shields.io/maintenance/yes/2024)
-[![.NET Standard 2.0 - 2.1 | 6.0](https://img.shields.io/badge/.NET-Standard%202.0%20--%202.1%20%7C%206.0-lightgrey)](https://dotnet.microsoft.com/en-us/)
-[![C# 10](https://img.shields.io/badge/C%23-10-lightgrey)](https://docs.microsoft.com/en-us/dotnet/csharp/)
-[![Release](https://img.shields.io/github/v/release/zencq/libNOM.collect?display_name=tag)](https://github.com/zencq/libNOM.collect/releases/latest)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/zencq/libNOM.collect/pipeline.yml?logo=github)](https://github.com/zencq/libNOM.collect/actions/workflows/pipeline.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/85ed3f9d8cd05cac804b/maintainability)](https://codeclimate.com/github/zencq/libNOM.collect/maintainability)
 
-[![libNOM.collect](https://github.com/zencq/libNOM.collect/actions/workflows/pipeline.yml/badge.svg)](https://github.com/zencq/libNOM.collect/actions/workflows/pipeline.yml)
+[![.NET | Standard 2.0 - 2.1 | 6 - 8](https://img.shields.io/badge/.NET-Standard%202.0%20--%202.1%20%7C%206%20--%208-lightgrey)](https://dotnet.microsoft.com/en-us/)
+[![C# 12](https://img.shields.io/badge/C%23-12-lightgrey)](https://docs.microsoft.com/en-us/dotnet/csharp/)
+[![GitHub Release](https://img.shields.io/github/v/release/zencq/libNOM.collect?logo=github)](https://github.com/zencq/libNOM.collect/releases/latest)
+[![NuGet Version](https://img.shields.io/nuget/v/libNOM.collect?logo=nuget)](https://www.nuget.org/packages/libNOM.collect/)
 
 ## Introduction
 
 The `libNOM` label is a collection of .NET class libraries originally developed
-and used in [NomNom](https://github.com/zencq/NomNom), a savegame editor for [No Man's Sky](https://www.nomanssky.com/).
+and used in [NomNom](https://github.com/zencq/NomNom), the most complete savegame
+editor for [No Man's Sky](https://www.nomanssky.com/).
 
-`libNOM.collect` can be used to backup and restore collections like Starships and
-Companions to bypass the in-game limits.
+`libNOM.collect` can be used to backup and restore all kinds of collections, like
+*Starships* and *Companions*, to bypass the in-game limits.
 
 ## Getting Started
 
@@ -68,5 +71,5 @@ Thanks to the following people for their help in one way or another.
 
 ## Dependencies
 
-* [libNOM.map](https://github.com/zencq/libNOM.map) - Obfuscation and deobfuscation
+* [libNOM.map](https://www.nuget.org/packages/libNOM.map) - Obfuscation and deobfuscation
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) - Handle JSON objects
