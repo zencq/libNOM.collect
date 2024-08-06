@@ -59,7 +59,7 @@ public class FrigateCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "Frigate", json.SelectToken(useMapping ? $"PlayerStateData.FleetFrigates[{index}]" : $"6f=.;Du[{index}]") },
+            { "Frigate", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.FleetFrigates[{index}]" : $"vLc.6f=.;Du[{index}]") },
         };
 
         // Create tag.
@@ -123,9 +123,9 @@ public class Frigate : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.FleetFrigates[{_index}]";
+                return $"BaseContext.PlayerStateData.FleetFrigates[{_index}]";
 
-            return $"6f=.;Du[{_index}]";
+            return $"vLc.6f=.;Du[{_index}]";
         }
     }
 
@@ -234,12 +234,12 @@ public class Frigate : CollectionItem
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["FleetFrigates"]![index] = frigate;
+                json["BaseContext"]!["PlayerStateData"]!["FleetFrigates"]![index] = frigate;
             }
             else
             {
 
-                json["6f="]![";Du"]![index] = frigate;
+                json["vLc"]!["6f="]![";Du"]![index] = frigate;
             }
         }
     }

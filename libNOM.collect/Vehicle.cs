@@ -60,8 +60,8 @@ public class VehicleCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "Vehicle", json.SelectToken(useMapping ? $"PlayerStateData.VehicleOwnership[{index}]" : $"6f=.P;m[{index}]") },
-            { "CustomisationData", json.SelectToken(useMapping ? $"PlayerStateData.CharacterCustomisationData[{customisationIndex}]" : $"6f=.l:j[{customisationIndex}]") },
+            { "Vehicle", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.VehicleOwnership[{index}]" : $"vLc.6f=.P;m[{index}]") },
+            { "CustomisationData", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.CharacterCustomisationData[{customisationIndex}]" : $"vLc.6f=.l:j[{customisationIndex}]") },
             { "Type", index },
         };
 
@@ -138,9 +138,9 @@ public class Vehicle : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.VehicleOwnership[{_index}]";
+                return $"BaseContext.PlayerStateData.VehicleOwnership[{_index}]";
 
-            return $"6f=.P;m[{_index}]";
+            return $"vLc.6f=.P;m[{_index}]";
         }
     }
 
@@ -208,7 +208,7 @@ public class Vehicle : CollectionItem
             Data = new()
             {
                 { "Vehicle", json.SelectDeepClonedToken(JsonPath) },
-                { "CustomisationData", json.SelectDeepClonedToken($"PlayerStateData.CharacterCustomisationData[{_customisationIndex}]") },
+                { "CustomisationData", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.CharacterCustomisationData[{_customisationIndex}]") },
                 { "Type", _index },
             };
         }
@@ -217,7 +217,7 @@ public class Vehicle : CollectionItem
             Data = new()
             {
                 { "Vehicle", json.SelectDeepClonedToken(JsonPath) },
-                { "CustomisationData", json.SelectDeepClonedToken($"6f=.l:j[{_customisationIndex}]") },
+                { "CustomisationData", json.SelectDeepClonedToken($"vLc.6f=.l:j[{_customisationIndex}]") },
                 { "Type", _index },
             };
         }
@@ -292,25 +292,25 @@ public class Vehicle : CollectionItem
         if (Data.TryGetValue("Vehicle", out var vehicle) && vehicle is not null)
         {
             // Store previous values to keep position and owner.
-            var location = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.VehicleOwnership[{index}].Location" : $"6f=.P;m[{index}].YTa");
-            var position = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.VehicleOwnership[{index}].Position" : $"6f=.P;m[{index}].wMC");
-            var direction = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.VehicleOwnership[{index}].Direction" : $"6f=.P;m[{index}].l?l");
+            var location = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.VehicleOwnership[{index}].Location" : $"vLc.6f=.P;m[{index}].YTa");
+            var position = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.VehicleOwnership[{index}].Position" : $"vLc.6f=.P;m[{index}].wMC");
+            var direction = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.VehicleOwnership[{index}].Direction" : $"vLc.6f=.P;m[{index}].l?l");
 
             if (_useMapping)
             {
-                json["PlayerStateData"]!["VehicleOwnership"]![index] = vehicle;
+                json["BaseContext"]!["PlayerStateData"]!["VehicleOwnership"]![index] = vehicle;
 
-                json["PlayerStateData"]!["VehicleOwnership"]![index]!["Location"] = location;
-                json["PlayerStateData"]!["VehicleOwnership"]![index]!["Position"] = position;
-                json["PlayerStateData"]!["VehicleOwnership"]![index]!["Direction"] = direction;
+                json["BaseContext"]!["PlayerStateData"]!["VehicleOwnership"]![index]!["Location"] = location;
+                json["BaseContext"]!["PlayerStateData"]!["VehicleOwnership"]![index]!["Position"] = position;
+                json["BaseContext"]!["PlayerStateData"]!["VehicleOwnership"]![index]!["Direction"] = direction;
             }
             else
             {
-                json["6f="]!["P;m"]![index] = vehicle;
+                json["vLc"]!["6f="]!["P;m"]![index] = vehicle;
 
-                json["6f="]!["P;m"]![index]!["YTa"] = location;
-                json["6f="]!["P;m"]![index]!["wMC"] = position;
-                json["6f="]!["P;m"]![index]!["l?l"] = direction;
+                json["vLc"]!["6f="]!["P;m"]![index]!["YTa"] = location;
+                json["vLc"]!["6f="]!["P;m"]![index]!["wMC"] = position;
+                json["vLc"]!["6f="]!["P;m"]![index]!["l?l"] = direction;
             }
         }
         if (Data.TryGetValue("CustomisationData", out var customisationData) && customisationData is not null)
@@ -318,11 +318,11 @@ public class Vehicle : CollectionItem
             var customisationIndex = GetCustomisationIndex(index);
             if (_useMapping)
             {
-                json["PlayerStateData"]!["CharacterCustomisationData"]![customisationIndex] = customisationData;
+                json["BaseContext"]!["PlayerStateData"]!["CharacterCustomisationData"]![customisationIndex] = customisationData;
             }
             else
             {
-                json["6f="]!["l:j"]![customisationIndex] = customisationData;
+                json["vLc"]!["6f="]!["l:j"]![customisationIndex] = customisationData;
             }
         }
     }

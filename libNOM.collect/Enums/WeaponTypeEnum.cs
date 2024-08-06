@@ -16,4 +16,8 @@ public enum WeaponTypeEnum
     Pristine,
     Alien,
     Royal,
+    Robot,
+    Atlas,
+    Staff,
+    StaffAtlas,
 }

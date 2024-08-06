@@ -55,7 +55,7 @@ public class OutfitCollection : Collection
     {
         if (index < 0)
         {
-            var preset = json.GetValue<string>("6f=.l:j[0].VFd", "PlayerStateData.CharacterCustomisationData[0].SelectedPreset");
+            var preset = json.GetValue<string>("vLc.6f=.l:j[0].VFd", "BaseContext.PlayerStateData.CharacterCustomisationData[0].SelectedPreset");
             if (preset is not null && preset != "^")
                 return preset.Replace("^", "");
         }
@@ -85,11 +85,11 @@ public class OutfitCollection : Collection
         // Prepare.
         if (useMapping)
         {
-            path = index < 0 ? "PlayerStateData.CharacterCustomisationData[0].CustomData" : $"PlayerStateData.Outfits[{index}]";
+            path = index < 0 ? "BaseContext.PlayerStateData.CharacterCustomisationData[0].CustomData" : $"BaseContext.PlayerStateData.Outfits[{index}]";
         }
         else
         {
-            path = index < 0 ? "6f=.l:j[0].wnR" : $"6f=.cf5[{index}]";
+            path = index < 0 ? "vLc.6f=.l:j[0].wnR" : $"vLc.6f=.cf5[{index}]";
         }
 
         // Create Dictionary.
@@ -197,9 +197,9 @@ public partial class Outfit : CollectionItem
         get
         {
             if (_useMapping)
-                return _index < 0 ? "PlayerStateData.CharacterCustomisationData[0].CustomData" : $"PlayerStateData.Outfits[{_index}]";
+                return _index < 0 ? "BaseContext.PlayerStateData.CharacterCustomisationData[0].CustomData" : $"BaseContext.PlayerStateData.Outfits[{_index}]";
 
-            return _index < 0 ? "6f=.l:j[0].wnR" : $"6f=.cf5[{_index}]";
+            return _index < 0 ? "vLc.6f=.l:j[0].wnR" : $"vLc.6f=.cf5[{_index}]";
         }
     }
     public override string Name // { get; set; }
@@ -347,24 +347,24 @@ public partial class Outfit : CollectionItem
             {
                 if (index < 0)
                 {
-                    json["PlayerStateData"]!["CharacterCustomisationData"]![0]!["SelectedPreset"] = "^";
-                    json["PlayerStateData"]!["CharacterCustomisationData"]![0]!["CustomData"] = outfit;
+                    json["BaseContext"]!["PlayerStateData"]!["CharacterCustomisationData"]![0]!["SelectedPreset"] = "^";
+                    json["BaseContext"]!["PlayerStateData"]!["CharacterCustomisationData"]![0]!["CustomData"] = outfit;
                 }
                 else
                 {
-                    json["PlayerStateData"]!["Outfits"]![index] = outfit;
+                    json["BaseContext"]!["PlayerStateData"]!["Outfits"]![index] = outfit;
                 }
             }
             else
             {
                 if (index < 0)
                 {
-                    json["6f="]!["l:j"]![0]!["VFd"] = "^";
-                    json["6f="]!["l:j"]![0]!["wnR"] = outfit;
+                    json["vLc"]!["6f="]!["l:j"]![0]!["VFd"] = "^";
+                    json["vLc"]!["6f="]!["l:j"]![0]!["wnR"] = outfit;
                 }
                 else
                 {
-                    json["6f="]!["cf5"]![index] = outfit;
+                    json["vLc"]!["6f="]!["cf5"]![index] = outfit;
                 }
             }
         }

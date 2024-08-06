@@ -58,7 +58,7 @@ public class ByteBeatCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "Song", json.SelectToken(useMapping ? $"PlayerStateData.ByteBeatLibrary.MySongs[{index}]" : $"6f=.8iI.ON4[{index}]") },
+            { "Song", json.SelectToken(useMapping ? $"CommonStateData.ByteBeatLibrary.MySongs[{index}]" : $"<h0.8iI.ON4[{index}]") },
         };
 
         // Create tag.
@@ -121,9 +121,9 @@ public class ByteBeat : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.ByteBeatLibrary.MySongs[{_index}]";
+                return $"CommonStateData.ByteBeatLibrary.MySongs[{_index}]";
 
-            return $"6f=.8iI.ON4[{_index}]";
+            return $"<h0.8iI.ON4[{_index}]";
         }
     }
 
@@ -240,12 +240,12 @@ public class ByteBeat : CollectionItem
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["ByteBeatLibrary"]!["MySongs"]![index] = song;
+                json["CommonStateData"]!["ByteBeatLibrary"]!["MySongs"]![index] = song;
             }
             else
             {
 
-                json["6f="]!["8iI"]!["ON4"]![index] = song;
+                json["<h0"]!["8iI"]!["ON4"]![index] = song;
             }
         }
     }

@@ -60,9 +60,9 @@ public class StarshipCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "Ship", json.SelectToken(useMapping ? $"PlayerStateData.ShipOwnership[{index}]" : $"6f=.@Cs[{index}]") },
-            { "UseLegacyColours", json.SelectToken(useMapping ? $"PlayerStateData.ShipUsesLegacyColours[{index}]" : $"6f=.4hl[{index}]") },
-            { "Colours", json.SelectDeepClonedToken(useMapping ? $"PlayerStateData.CharacterCustomisationData[{customisationIndex}].CustomData.Colours" : $"6f=.l:j[{customisationIndex}].wnR.Aak") },
+            { "Ship", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.ShipOwnership[{index}]" : $"vLc.6f=.@Cs[{index}]") },
+            { "UseLegacyColours", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.ShipUsesLegacyColours[{index}]" : $"vLc.6f=.4hl[{index}]") },
+            { "Colours", json.SelectDeepClonedToken(useMapping ? $"BaseContext.PlayerStateData.CharacterCustomisationData[{customisationIndex}].CustomData.Colours" : $"vLc.6f=.l:j[{customisationIndex}].wnR.Aak") },
         };
 
         // Create tag.
@@ -153,9 +153,9 @@ public class Starship : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.ShipOwnership[{_index}]";
+                return $"BaseContext.PlayerStateData.ShipOwnership[{_index}]";
 
-            return $"6f=.@Cs[{_index}]";
+            return $"vLc.6f=.@Cs[{_index}]";
         }
     }
 
@@ -213,8 +213,8 @@ public class Starship : CollectionItem
             Data = new()
             {
                 { "Ship", json.SelectDeepClonedToken(JsonPath) },
-                { "UseLegacyColours", json.SelectDeepClonedToken($"PlayerStateData.ShipUsesLegacyColours[{_index}]") },
-                { "Colours", json.SelectDeepClonedToken($"PlayerStateData.CharacterCustomisationData[{_customisationIndex}].CustomData.Colours") },
+                { "UseLegacyColours", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.ShipUsesLegacyColours[{_index}]") },
+                { "Colours", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.CharacterCustomisationData[{_customisationIndex}].CustomData.Colours") },
             };
         }
         else
@@ -222,8 +222,8 @@ public class Starship : CollectionItem
             Data = new()
             {
                 { "Ship", json.SelectDeepClonedToken(JsonPath) },
-                { "UseLegacyColours", json.SelectDeepClonedToken($"6f=.4hl[{_index}]") },
-                { "Colours", json.SelectDeepClonedToken($"6f=.l:j[{_customisationIndex}].wnR.Aak") },
+                { "UseLegacyColours", json.SelectDeepClonedToken($"vLc.6f=.4hl[{_index}]") },
+                { "Colours", json.SelectDeepClonedToken($"vLc.6f=.l:j[{_customisationIndex}].wnR.Aak") },
             };
         }
     }
@@ -312,23 +312,23 @@ public class Starship : CollectionItem
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["ShipOwnership"]![index] = ship;
+                json["BaseContext"]!["PlayerStateData"]!["ShipOwnership"]![index] = ship;
             }
             else
             {
 
-                json["6f="]!["@Cs"]![index] = ship;
+                json["vLc"]!["6f="]!["@Cs"]![index] = ship;
             }
         }
         if (Data.TryGetValue("UseLegacyColours", out var useLegacyColours) && useLegacyColours is not null)
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["ShipUsesLegacyColours"]![index] = useLegacyColours;
+                json["BaseContext"]!["PlayerStateData"]!["ShipUsesLegacyColours"]![index] = useLegacyColours;
             }
             else
             {
-                json["6f="]!["4hl"]![index] = useLegacyColours;
+                json["vLc"]!["6f="]!["4hl"]![index] = useLegacyColours;
             }
         }
         if (Data.TryGetValue("Colours", out var colours) && colours is not null)
@@ -336,11 +336,11 @@ public class Starship : CollectionItem
             var customisationIndex = GetCustomisationIndex(index);
             if (_useMapping)
             {
-                json["PlayerStateData"]!["CharacterCustomisationData"]![customisationIndex]!["CustomData"]!["Colours"] = colours;
+                json["BaseContext"]!["PlayerStateData"]!["CharacterCustomisationData"]![customisationIndex]!["CustomData"]!["Colours"] = colours;
             }
             else
             {
-                json["6f="]!["l:j"]![customisationIndex]!["wnR"]!["Aak"] = colours;
+                json["vLc"]!["6f="]!["l:j"]![customisationIndex]!["wnR"]!["Aak"] = colours;
             }
         }
     }

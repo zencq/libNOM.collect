@@ -59,7 +59,7 @@ public class WeaponCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "Multitool", json.SelectToken(useMapping ? $"PlayerStateData.Multitools[{index}]" : $"6f=.SuJ[{index}]") },
+            { "Multitool", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.Multitools[{index}]" : $"vLc.6f=.SuJ[{index}]") },
             { "Type", null },
         };
 
@@ -142,9 +142,9 @@ public class Weapon : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.Multitools[{_index}]";
+                return $"BaseContext.PlayerStateData.Multitools[{_index}]";
 
-            return $"6f=.SuJ[{_index}]";
+            return $"vLc.6f=.SuJ[{_index}]";
         }
     }
 
@@ -269,12 +269,12 @@ public class Weapon : CollectionItem
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["Multitools"]![index] = multitool;
+                json["BaseContext"]!["PlayerStateData"]!["Multitools"]![index] = multitool;
             }
             else
             {
 
-                json["6f="]!["SuJ"]![index] = multitool;
+                json["vLc"]!["6f="]!["SuJ"]![index] = multitool;
             }
         }
     }

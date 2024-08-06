@@ -60,13 +60,13 @@ public class FreighterCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "HomeSystem", json.SelectToken(useMapping ? $"PlayerStateData.CurrentFreighterHomeSystemSeed" : $"6f=.kYq") },
-            { "Freighter", json.SelectToken(useMapping ? $"PlayerStateData.CurrentFreighter" : $"6f=.bIR") },
-            { "Inventory", json.SelectToken(useMapping ? $"PlayerStateData.FreighterInventory" : $"6f=.8ZP") },
-            { "Inventory_TechOnly", json.SelectToken(useMapping ? $"PlayerStateData.FreighterInventory_TechOnly" : $"6f=.0wS") },
-            { "Inventory_Cargo", json.SelectToken(useMapping ? $"PlayerStateData.FreighterInventory_Cargo" : $"6f=.FdP") },
-            { "Name", json.SelectToken(useMapping ? $"PlayerStateData.PlayerFreighterName" : $"6f=.vxi") },
-            { "Colours", json.SelectToken(useMapping ? $"PlayerStateData.CharacterCustomisationData[{customisationIndex}].CustomData.Colours" : $"6f=.l:j[{customisationIndex}].wnR.Aak") },
+            { "HomeSystem", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.CurrentFreighterHomeSystemSeed" : $"vLc.6f=.kYq") },
+            { "Freighter", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.CurrentFreighter" : $"vLc.6f=.bIR") },
+            { "Inventory", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.FreighterInventory" : $"vLc.6f=.8ZP") },
+            { "Inventory_TechOnly", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.FreighterInventory_TechOnly" : $"vLc.6f=.0wS") },
+            { "Inventory_Cargo", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.FreighterInventory_Cargo" : $"vLc.6f=.FdP") },
+            { "Name", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.PlayerFreighterName" : $"vLc.6f=.vxi") },
+            { "Colours", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.CharacterCustomisationData[{customisationIndex}].CustomData.Colours" : $"vLc.6f=.l:j[{customisationIndex}].wnR.Aak") },
         };
 
         // Create tag.
@@ -149,9 +149,9 @@ public class Freighter : CollectionItem
         {
             // Spread over multiple entries and not under a separate object and therefore the first in that area.
             if (_useMapping)
-                return $"PlayerStateData.CurrentFreighter";
+                return $"BaseContext.PlayerStateData.CurrentFreighter";
 
-            return $"6f=.bIR";
+            return $"vLc.6f=.bIR";
         }
     }
 
@@ -211,12 +211,12 @@ public class Freighter : CollectionItem
             Data = new()
             {
                 { "HomeSystem", json.SelectDeepClonedToken(JsonPath) },
-                { "Freighter", json.SelectDeepClonedToken($"PlayerStateData.CurrentFreighter") },
-                { "Inventory", json.SelectDeepClonedToken($"PlayerStateData.FreighterInventory") },
-                { "Inventory_TechOnly", json.SelectDeepClonedToken($"PlayerStateData.FreighterInventory_TechOnly") },
-                { "Inventory_Cargo", json.SelectDeepClonedToken($"PlayerStateData.FreighterInventory_Cargo") },
-                { "Name", json.SelectDeepClonedToken($"PlayerStateData.PlayerFreighterName") },
-                { "Colours", json.SelectDeepClonedToken($"PlayerStateData.CharacterCustomisationData[{_customisationIndex}].CustomData.Colours") },
+                { "Freighter", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.CurrentFreighter") },
+                { "Inventory", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.FreighterInventory") },
+                { "Inventory_TechOnly", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.FreighterInventory_TechOnly") },
+                { "Inventory_Cargo", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.FreighterInventory_Cargo") },
+                { "Name", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.PlayerFreighterName") },
+                { "Colours", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.CharacterCustomisationData[{_customisationIndex}].CustomData.Colours") },
             };
         }
         else
@@ -224,12 +224,12 @@ public class Freighter : CollectionItem
             Data = new()
             {
                 { "HomeSystem", json.SelectDeepClonedToken(JsonPath) },
-                { "Freighter", json.SelectDeepClonedToken($"6f=.bIR") },
-                { "Inventory", json.SelectDeepClonedToken($"6f=.8ZP") },
-                { "Inventory_TechOnly", json.SelectDeepClonedToken($"6f=.0wS") },
-                { "Inventory_Cargo", json.SelectDeepClonedToken($"6f=.FdP") },
-                { "Name", json.SelectDeepClonedToken($"6f=.vxi") },
-                { "Colours", json.SelectDeepClonedToken($"6f=.l:j[{_customisationIndex}].wnR.Aak") },
+                { "Freighter", json.SelectDeepClonedToken($"vLc.6f=.bIR") },
+                { "Inventory", json.SelectDeepClonedToken($"vLc.6f=.8ZP") },
+                { "Inventory_TechOnly", json.SelectDeepClonedToken($"vLc.6f=.0wS") },
+                { "Inventory_Cargo", json.SelectDeepClonedToken($"vLc.6f=.FdP") },
+                { "Name", json.SelectDeepClonedToken($"vLc.6f=.vxi") },
+                { "Colours", json.SelectDeepClonedToken($"vLc.6f=.l:j[{_customisationIndex}].wnR.Aak") },
             };
         }
     }
@@ -310,67 +310,67 @@ public class Freighter : CollectionItem
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["CurrentFreighterHomeSystemSeed"] = homeSystem;
+                json["BaseContext"]!["PlayerStateData"]!["CurrentFreighterHomeSystemSeed"] = homeSystem;
             }
             else
             {
 
-                json["6f="]!["kYq"] = homeSystem;
+                json["vLc"]!["6f="]!["kYq"] = homeSystem;
             }
         }
         if (Data.TryGetValue("Freighter", out var freighter) && freighter is not null)
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["CurrentFreighter"] = freighter;
+                json["BaseContext"]!["PlayerStateData"]!["CurrentFreighter"] = freighter;
             }
             else
             {
-                json["6f="]!["bIR"] = freighter;
+                json["vLc"]!["6f="]!["bIR"] = freighter;
             }
         }
         if (Data.TryGetValue("Inventory", out var inventory) && inventory is not null)
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["FreighterInventory"] = inventory;
+                json["BaseContext"]!["PlayerStateData"]!["FreighterInventory"] = inventory;
             }
             else
             {
-                json["6f="]!["8ZP"] = inventory;
+                json["vLc"]!["6f="]!["8ZP"] = inventory;
             }
         }
         if (Data.TryGetValue("Inventory_TechOnly", out var inventoryTechOnly) && inventoryTechOnly is not null)
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["FreighterInventory_TechOnly"] = inventoryTechOnly;
+                json["BaseContext"]!["PlayerStateData"]!["FreighterInventory_TechOnly"] = inventoryTechOnly;
             }
             else
             {
-                json["6f="]!["0wS"] = inventoryTechOnly;
+                json["vLc"]!["6f="]!["0wS"] = inventoryTechOnly;
             }
         }
         if (Data.TryGetValue("Inventory_Cargo", out var inventoryCargo) && inventoryCargo is not null)
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["FreighterInventory_Cargo"] = inventoryCargo;
+                json["BaseContext"]!["PlayerStateData"]!["FreighterInventory_Cargo"] = inventoryCargo;
             }
             else
             {
-                json["6f="]!["FdP"] = inventoryCargo;
+                json["vLc"]!["6f="]!["FdP"] = inventoryCargo;
             }
         }
         if (Data.TryGetValue("Name", out var name) && name is not null)
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["PlayerFreighterName"] = name;
+                json["BaseContext"]!["PlayerStateData"]!["PlayerFreighterName"] = name;
             }
             else
             {
-                json["6f="]!["vxi"] = name;
+                json["vLc"]!["6f="]!["vxi"] = name;
             }
         }
         if (Data.TryGetValue("Colours", out var colours) && colours is not null)
@@ -378,11 +378,11 @@ public class Freighter : CollectionItem
             var customisationIndex = GetCustomisationIndex();
             if (_useMapping)
             {
-                json["PlayerStateData"]!["CharacterCustomisationData"]![customisationIndex]!["CustomData"]!["Colours"] = colours;
+                json["BaseContext"]!["PlayerStateData"]!["CharacterCustomisationData"]![customisationIndex]!["CustomData"]!["Colours"] = colours;
             }
             else
             {
-                json["6f="]!["l:j"]![customisationIndex]!["wnR"]!["Aak"] = colours;
+                json["vLc"]!["6f="]!["l:j"]![customisationIndex]!["wnR"]!["Aak"] = colours;
             }
         }
     }

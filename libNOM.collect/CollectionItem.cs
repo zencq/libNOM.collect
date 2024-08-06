@@ -219,7 +219,7 @@ public abstract class CollectionItem
     {
         foreach (var value in data.Values.Where(d => d is not null))
         {
-            Mapping.Deobfuscate(value);
+            Mapping.Deobfuscate(value!);
         }
     }
 
@@ -232,7 +232,7 @@ public abstract class CollectionItem
     {
         foreach (var value in data.Values)
         {
-            Mapping.Obfuscate(value);
+            Mapping.Obfuscate(value!);
         }
     }
 
@@ -264,6 +264,7 @@ public abstract class CollectionItem
         {
             "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/FREIGHTER_PROC.SCENE.MBIN" => "Normal",
             "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CAPITALFREIGHTER_PROC.SCENE.MBIN" => "Capital",
+            "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/PIRATEFREIGHTER.SCENE.MBIN" => "Dreadnought",
             _ => null,
         };
     }
@@ -276,11 +277,14 @@ public abstract class CollectionItem
             "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTER_PROC.SCENE.MBIN" => ShipTypeEnum.Fighter,
             "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTERCLASSICGOLD.SCENE.MBIN" => ShipTypeEnum.FighterClassicGold,
             "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTERSPECIALSWITCH.SCENE.MBIN" => ShipTypeEnum.FighterSpecialSwitch,
+            "MODELS/COMMON/SPACECRAFT/FIGHTERS/VRSPEEDER.SCENE.MBIN" => ShipTypeEnum.FighterVrSpeeder,
+            "MODELS/COMMON/SPACECRAFT/FIGHTERS/WRACER.SCENE.MBIN" => ShipTypeEnum.FighterStarbornRunner,
             "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN" => ShipTypeEnum.Scientific,
             "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN" => ShipTypeEnum.Shuttle,
             "MODELS/COMMON/SPACECRAFT/S-CLASS/S-CLASS_PROC.SCENE.MBIN" => ShipTypeEnum.Royal,
             "MODELS/COMMON/SPACECRAFT/S-CLASS/BIOPARTS/BIOSHIP_PROC.SCENE.MBIN" => ShipTypeEnum.Alien,
             "MODELS/COMMON/SPACECRAFT/SAILSHIP/SAILSHIP_PROC.SCENE.MBIN" => ShipTypeEnum.Sail,
+            "MODELS/COMMON/SPACECRAFT/SENTINELSHIP/SENTINELSHIP_PROC.SCENE.MBIN" => ShipTypeEnum.Robot,
             _ => null,
         };
     }
@@ -291,6 +295,9 @@ public abstract class CollectionItem
         {
             "MODELS/COMMON/WEAPONS/MULTITOOL/SWITCHMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.RifleSwitch,
             "MODELS/COMMON/WEAPONS/MULTITOOL/ROYALMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Royal,
+            "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Robot,
+            "MODELS/COMMON/WEAPONS/MULTITOOL/ATLASMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.StaffAtlas,
+            "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Staff,
             _ => null,
         };
     }

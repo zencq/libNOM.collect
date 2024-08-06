@@ -16,9 +16,12 @@ internal enum ShipTypeEnum
     FighterClassicGold,
     [Description("Horizon Vector NX")]
     FighterSpecialSwitch,
+    FighterVrSpeeder,
+    FighterStarbornRunner,
     Scientific,
     Shuttle,
     Royal,
     Alien,
     Sail,
+    Robot,
 }

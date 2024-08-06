@@ -113,7 +113,7 @@ public class BaseCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "PersistentBase", json.SelectToken(useMapping ? $"PlayerStateData.PersistentPlayerBases[{index}]" : $"6f=.F?0[{index}]") },
+            { "PersistentBase", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.PersistentPlayerBases[{index}]" : $"vLc.6f=.F?0[{index}]") },
         };
 
         // Create tag.
@@ -281,9 +281,9 @@ public class Base : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.PersistentPlayerBases[{_index}]";
+                return $"BaseContext.PlayerStateData.PersistentPlayerBases[{_index}]";
 
-            return $"6f=.F?0[{_index}]";
+            return $"vLc.6f=.F?0[{_index}]";
         }
     }
 
@@ -442,40 +442,40 @@ public class Base : CollectionItem
         if (Data.TryGetValue("PersistentBase", out var persistentBase) && persistentBase is not null)
         {
             // Store previous values to keep position and owner.
-            var galacticAddress = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.PersistentPlayerBases[{index}].GalacticAddress" : $"6f=.F?0[{index}].oZw");
-            var position = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.PersistentPlayerBases[{index}].Position" : $"6f=.F?0[{index}].wMC");
-            var forward = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.PersistentPlayerBases[{index}].Forward" : $"6f=.F?0[{index}].oHw");
-            var owner = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.PersistentPlayerBases[{index}].Owner" : $"6f=.F?0[{index}].3?K");
+            var galacticAddress = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.PersistentPlayerBases[{index}].GalacticAddress" : $"vLc.6f=.F?0[{index}].oZw");
+            var position = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.PersistentPlayerBases[{index}].Position" : $"vLc.6f=.F?0[{index}].wMC");
+            var forward = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.PersistentPlayerBases[{index}].Forward" : $"vLc.6f=.F?0[{index}].oHw");
+            var owner = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.PersistentPlayerBases[{index}].Owner" : $"vLc.6f=.F?0[{index}].3?K");
 
             if (_useMapping)
             {
-                json["PlayerStateData"]!["PersistentPlayerBases"]![index] = persistentBase;
+                json["BaseContext"]!["PlayerStateData"]!["PersistentPlayerBases"]![index] = persistentBase;
 
-                json["PlayerStateData"]!["PersistentPlayerBases"]![index]!["GalacticAddress"] = galacticAddress;
-                json["PlayerStateData"]!["PersistentPlayerBases"]![index]!["Position"] = position;
-                json["PlayerStateData"]!["PersistentPlayerBases"]![index]!["Forward"] = forward;
-                json["PlayerStateData"]!["PersistentPlayerBases"]![index]!["Owner"] = owner;
+                json["BaseContext"]!["PlayerStateData"]!["PersistentPlayerBases"]![index]!["GalacticAddress"] = galacticAddress;
+                json["BaseContext"]!["PlayerStateData"]!["PersistentPlayerBases"]![index]!["Position"] = position;
+                json["BaseContext"]!["PlayerStateData"]!["PersistentPlayerBases"]![index]!["Forward"] = forward;
+                json["BaseContext"]!["PlayerStateData"]!["PersistentPlayerBases"]![index]!["Owner"] = owner;
             }
             else
             {
 
-                json["6f="]!["F?0"]![index] = persistentBase;
+                json["vLc"]!["6f="]!["F?0"]![index] = persistentBase;
 
-                json["6f="]!["F?0"]![index]!["oZw"] = galacticAddress;
-                json["6f="]!["F?0"]![index]!["wMC"] = position;
-                json["6f="]!["F?0"]![index]!["oHw"] = forward;
-                json["6f="]!["F?0"]![index]!["3?K"] = owner;
+                json["vLc"]!["6f="]!["F?0"]![index]!["oZw"] = galacticAddress;
+                json["vLc"]!["6f="]!["F?0"]![index]!["wMC"] = position;
+                json["vLc"]!["6f="]!["F?0"]![index]!["oHw"] = forward;
+                json["vLc"]!["6f="]!["F?0"]![index]!["3?K"] = owner;
             }
         }
         if (Data.TryGetValue("Objects", out var objects) && objects is not null)
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["PersistentPlayerBases"]![index]!["Objects"] = objects;
+                json["BaseContext"]!["PlayerStateData"]!["PersistentPlayerBases"]![index]!["Objects"] = objects;
             }
             else
             {
-                json["6f="]!["F?0"]![index]!["@ZJ"] = objects;
+                json["vLc"]!["6f="]!["F?0"]![index]!["@ZJ"] = objects;
             }
         }
     }

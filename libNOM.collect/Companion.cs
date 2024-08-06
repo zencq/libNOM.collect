@@ -59,8 +59,8 @@ public class CompanionCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "Pet", json.SelectToken(useMapping ? $"PlayerStateData.Pets[{index}]" : $"6f=.Mcl[{index}]") },
-            { "AccessoryCustomisation", json.SelectToken(useMapping ? $"PlayerStateData.PetAccessoryCustomisation[{index}]" : $"6f=.j30[{index}]") },
+            { "Pet", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.Pets[{index}]" : $"vLc.6f=.Mcl[{index}]") },
+            { "AccessoryCustomisation", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.PetAccessoryCustomisation[{index}]" : $"vLc.6f=.j30[{index}]") },
         };
 
         // Create tag.
@@ -142,9 +142,9 @@ public class Companion : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.Pets[{_index}]";
+                return $"BaseContext.PlayerStateData.Pets[{_index}]";
 
-            return $"6f=.Mcl[{_index}]";
+            return $"vLc.6f=.Mcl[{_index}]";
         }
     }
 
@@ -194,7 +194,7 @@ public class Companion : CollectionItem
             Data = new()
             {
                 { "Pet", json.SelectDeepClonedToken(JsonPath) },
-                { "AccessoryCustomisation", json.SelectDeepClonedToken($"PlayerStateData.PetAccessoryCustomisation[{_index}]") },
+                { "AccessoryCustomisation", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.PetAccessoryCustomisation[{_index}]") },
             };
         }
         else
@@ -202,7 +202,7 @@ public class Companion : CollectionItem
             Data = new()
             {
                 { "Pet", json.SelectDeepClonedToken(JsonPath) },
-                { "AccessoryCustomisation", json.SelectDeepClonedToken($"6f=.j30[{_index}]") },
+                { "AccessoryCustomisation", json.SelectDeepClonedToken($"vLc.6f=.j30[{_index}]") },
             };
         }
     }
@@ -283,23 +283,23 @@ public class Companion : CollectionItem
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["Pets"]![index] = pet;
+                json["BaseContext"]!["PlayerStateData"]!["Pets"]![index] = pet;
             }
             else
             {
 
-                json["6f="]!["Mcl"]![index] = pet;
+                json["vLc"]!["6f="]!["Mcl"]![index] = pet;
             }
         }
         if (Data.TryGetValue("AccessoryCustomisation", out var accessoryCustomisation) && accessoryCustomisation is not null)
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["PetAccessoryCustomisation"]![index] = accessoryCustomisation;
+                json["BaseContext"]!["PlayerStateData"]!["PetAccessoryCustomisation"]![index] = accessoryCustomisation;
             }
             else
             {
-                json["6f="]!["j30"]![index] = accessoryCustomisation;
+                json["vLc"]!["6f="]!["j30"]![index] = accessoryCustomisation;
             }
         }
     }

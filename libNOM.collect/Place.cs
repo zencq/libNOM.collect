@@ -59,7 +59,7 @@ public class PlaceCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "UniverseAddress", json.SelectToken(useMapping ? "PlayerStateData.UniverseAddress" : "6f=.yhJ") },
+            { "UniverseAddress", json.SelectToken(useMapping ? "BaseContext.PlayerStateData.UniverseAddress" : "vLc.6f=.yhJ") },
             { "PlayerPosition", json.SelectToken(useMapping ? "SpawnStateData.PlayerPositionInSystem" : "rnc.mEH") },
             { "PlayerTransform", json.SelectToken(useMapping ? "SpawnStateData.PlayerTransformAt" : "rnc.l2U") },
             { "ShipPosition", json.SelectToken(useMapping ? "SpawnStateData.ShipPositionInSystem" : "rnc.tnP") },
@@ -143,9 +143,9 @@ public class Place : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.UniverseAddress";
+                return $"BaseContext.PlayerStateData.UniverseAddress";
 
-            return $"6f=.yhJ";
+            return $"vLc.6f=.yhJ";
         }
     }
 
@@ -315,12 +315,12 @@ public class Place : CollectionItem
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["UniverseAddress"] = universeAddress;
+                json["BaseContext"]!["PlayerStateData"]!["UniverseAddress"] = universeAddress;
             }
             else
             {
 
-                json["6f="]!["yhJ"] = universeAddress;
+                json["vLc"]!["6f="]!["yhJ"] = universeAddress;
             }
         }
         if (Data.TryGetValue("PlayerPosition", out var playerPosition) && playerPosition is not null)

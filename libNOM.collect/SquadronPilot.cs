@@ -59,7 +59,7 @@ public class SquadronPilotCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "Pilot", json.SelectToken(useMapping ? $"PlayerStateData.SquadronPilots[{index}]" : $"6f=.S5O[{index}]") },
+            { "Pilot", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.SquadronPilots[{index}]" : $"vLc.6f=.S5O[{index}]") },
         };
 
         // Create tag.
@@ -123,9 +123,9 @@ public class SquadronPilot : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.SquadronPilots[{_index}]";
+                return $"BaseContext.PlayerStateData.SquadronPilots[{_index}]";
 
-            return $"6f=.S5O[{_index}]";
+            return $"vLc.6f=.S5O[{_index}]";
         }
     }
 
@@ -229,12 +229,12 @@ public class SquadronPilot : CollectionItem
         {
             if (_useMapping)
             {
-                json["PlayerStateData"]!["SquadronPilots"]![index] = pilot;
+                json["BaseContext"]!["PlayerStateData"]!["SquadronPilots"]![index] = pilot;
             }
             else
             {
 
-                json["6f="]!["S5O"]![index] = pilot;
+                json["vLc"]!["6f="]!["S5O"]![index] = pilot;
             }
         }
     }

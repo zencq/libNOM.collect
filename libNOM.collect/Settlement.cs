@@ -59,7 +59,7 @@ public class SettlementCollection : Collection
         // Create Dictionary.
         var data = new Dictionary<string, JToken?>
         {
-            { "Settlement", json.SelectToken(useMapping ? $"PlayerStateData.SettlementStatesV2[{index}]" : $"6f=.GQA[{index}]") },
+            { "Settlement", json.SelectToken(useMapping ? $"BaseContext.PlayerStateData.SettlementStatesV2[{index}]" : $"vLc.6f=.GQA[{index}]") },
         };
 
         // Create tag.
@@ -123,9 +123,9 @@ public class Settlement : CollectionItem
         get
         {
             if (_useMapping)
-                return $"PlayerStateData.SettlementStatesV2[{_index}]";
+                return $"BaseContext.PlayerStateData.SettlementStatesV2[{_index}]";
 
-            return $"6f=.GQA[{_index}]";
+            return $"vLc.6f=.GQA[{_index}]";
         }
     }
 
@@ -233,25 +233,25 @@ public class Settlement : CollectionItem
         if (Data.TryGetValue("Settlement", out var settlement) && settlement is not null)
         {
             // Store previous values to keep position and owner.
-            var universeAddress = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.SettlementStatesV2[{index}].UniverseAddress" : $"6f=.GQA[{index}].yhJ");
-            var position = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.SettlementStatesV2[{index}].Position" : $"6f=.GQA[{index}].wMC");
-            var owner = json.SelectDeepClonedToken(_useMapping ? $"PlayerStateData.SettlementStatesV2[{index}].Owner" : $"6f=.GQA[{index}].3?K");
+            var universeAddress = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.SettlementStatesV2[{index}].UniverseAddress" : $"vLc.6f=.GQA[{index}].yhJ");
+            var position = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.SettlementStatesV2[{index}].Position" : $"vLc.6f=.GQA[{index}].wMC");
+            var owner = json.SelectDeepClonedToken(_useMapping ? $"BaseContext.PlayerStateData.SettlementStatesV2[{index}].Owner" : $"vLc.6f=.GQA[{index}].3?K");
 
             if (_useMapping)
             {
-                json["PlayerStateData"]!["SettlementStatesV2"]![index] = settlement;
+                json["BaseContext"]!["PlayerStateData"]!["SettlementStatesV2"]![index] = settlement;
 
-                json["PlayerStateData"]!["SettlementStatesV2"]![index]!["UniverseAddress"] = universeAddress;
-                json["PlayerStateData"]!["SettlementStatesV2"]![index]!["Position"] = position;
-                json["PlayerStateData"]!["SettlementStatesV2"]![index]!["Owner"] = owner;
+                json["BaseContext"]!["PlayerStateData"]!["SettlementStatesV2"]![index]!["UniverseAddress"] = universeAddress;
+                json["BaseContext"]!["PlayerStateData"]!["SettlementStatesV2"]![index]!["Position"] = position;
+                json["BaseContext"]!["PlayerStateData"]!["SettlementStatesV2"]![index]!["Owner"] = owner;
             }
             else
             {
-                json["6f="]!["GQA"]![index] = settlement;
+                json["vLc"]!["6f="]!["GQA"]![index] = settlement;
 
-                json["6f="]!["GQA"]![index]!["yhJ"] = universeAddress;
-                json["6f="]!["GQA"]![index]!["wMC"] = position;
-                json["6f="]!["GQA"]![index]!["3?K"] = owner;
+                json["vLc"]!["6f="]!["GQA"]![index]!["yhJ"] = universeAddress;
+                json["vLc"]!["6f="]!["GQA"]![index]!["wMC"] = position;
+                json["vLc"]!["6f="]!["GQA"]![index]!["3?K"] = owner;
             }
         }
     }

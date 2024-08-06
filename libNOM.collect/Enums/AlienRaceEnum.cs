@@ -15,4 +15,5 @@ internal enum AlienRaceEnum
     Diplomats,
     Exotics,
     None,
+    Builders,
 }
