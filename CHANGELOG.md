@@ -6,12 +6,22 @@ All notable changes to this project will be documented in this file. It uses the
 
 ## Unreleased
 
+### Known Issues
 ### Added
 ### Changed
 ### Deprecated
 ### Removed
 ### Fixed
 ### Security
+
+## 0.1.1 (2024-08-06)
+
+### Added
+* Now targeting up to .NET 8 as per the [.NET release lifecycle](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
+* Now publishing to [NuGet Gallery](https://www.nuget.org/packages/libNOM.collect)
+
+### Fixed
+* Compatibility issues with post-Omega saves (only supports those for now)
 
 ## 0.1.0 (2022-10-31)
 
