@@ -5,7 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/85ed3f9d8cd05cac804b/maintainability)](https://codeclimate.com/github/zencq/libNOM.collect/maintainability)
 
 [![.NET | Standard 2.0 - 2.1 | 6 - 8](https://img.shields.io/badge/.NET-Standard%202.0%20--%202.1%20%7C%206%20--%208-lightgrey)](https://dotnet.microsoft.com/en-us/)
-[![C# 12](https://img.shields.io/badge/C%23-12-lightgrey)](https://docs.microsoft.com/en-us/dotnet/csharp/)
+[![C# 10](https://img.shields.io/badge/C%23-10-lightgrey)](https://docs.microsoft.com/en-us/dotnet/csharp/)
 [![GitHub Release](https://img.shields.io/github/v/release/zencq/libNOM.collect?logo=github)](https://github.com/zencq/libNOM.collect/releases/latest)
 [![NuGet Version](https://img.shields.io/nuget/v/libNOM.collect?logo=nuget)](https://www.nuget.org/packages/libNOM.collect/)
 
@@ -61,7 +61,7 @@ file for details.
 
 ## Authors
 
-* **Christian Engelhardt** (zencq) - [GitHub](https://github.com/cengelha)
+* **Christian Engelhardt** (zencq) - [GitHub](https://github.com/zencq)
 
 ## Credits
 
