@@ -4,9 +4,9 @@
     ".NETStandard,Version=v2.0": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.2, )",
-        "resolved": "0.13.2",
-        "contentHash": "o0bglhNiVhFU7M0Zfomvo/p3fASJFDGOVkIcFJFUIOCKtU2PMrCAaWgJbZLvt3MFbWebzsK7TxqfXzhoNbi+oQ==",
+        "requested": "[0.13.3, )",
+        "resolved": "0.13.3",
+        "contentHash": "USWcpDovcqsEskidgLecWw7fSIzYfa2NRLjhTqQ5HJdZGIQiU5l7qnDodTUNvpfHWLjFmZ+AgRVMpBj3KSD3Ig==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "13.0.1"
@@ -61,9 +61,9 @@
     ".NETStandard,Version=v2.1": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.2, )",
-        "resolved": "0.13.2",
-        "contentHash": "o0bglhNiVhFU7M0Zfomvo/p3fASJFDGOVkIcFJFUIOCKtU2PMrCAaWgJbZLvt3MFbWebzsK7TxqfXzhoNbi+oQ==",
+        "requested": "[0.13.3, )",
+        "resolved": "0.13.3",
+        "contentHash": "USWcpDovcqsEskidgLecWw7fSIzYfa2NRLjhTqQ5HJdZGIQiU5l7qnDodTUNvpfHWLjFmZ+AgRVMpBj3KSD3Ig==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "13.0.1"
@@ -104,9 +104,9 @@
     "net6.0": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.2, )",
-        "resolved": "0.13.2",
-        "contentHash": "o0bglhNiVhFU7M0Zfomvo/p3fASJFDGOVkIcFJFUIOCKtU2PMrCAaWgJbZLvt3MFbWebzsK7TxqfXzhoNbi+oQ==",
+        "requested": "[0.13.3, )",
+        "resolved": "0.13.3",
+        "contentHash": "USWcpDovcqsEskidgLecWw7fSIzYfa2NRLjhTqQ5HJdZGIQiU5l7qnDodTUNvpfHWLjFmZ+AgRVMpBj3KSD3Ig==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "13.0.1"
@@ -147,9 +147,9 @@
     "net7.0": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.2, )",
-        "resolved": "0.13.2",
-        "contentHash": "o0bglhNiVhFU7M0Zfomvo/p3fASJFDGOVkIcFJFUIOCKtU2PMrCAaWgJbZLvt3MFbWebzsK7TxqfXzhoNbi+oQ==",
+        "requested": "[0.13.3, )",
+        "resolved": "0.13.3",
+        "contentHash": "USWcpDovcqsEskidgLecWw7fSIzYfa2NRLjhTqQ5HJdZGIQiU5l7qnDodTUNvpfHWLjFmZ+AgRVMpBj3KSD3Ig==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "13.0.1"
@@ -190,9 +190,9 @@
     "net8.0": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.2, )",
-        "resolved": "0.13.2",
-        "contentHash": "o0bglhNiVhFU7M0Zfomvo/p3fASJFDGOVkIcFJFUIOCKtU2PMrCAaWgJbZLvt3MFbWebzsK7TxqfXzhoNbi+oQ==",
+        "requested": "[0.13.3, )",
+        "resolved": "0.13.3",
+        "contentHash": "USWcpDovcqsEskidgLecWw7fSIzYfa2NRLjhTqQ5HJdZGIQiU5l7qnDodTUNvpfHWLjFmZ+AgRVMpBj3KSD3Ig==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "13.0.1"
