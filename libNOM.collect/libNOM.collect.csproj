@@ -91,7 +91,7 @@
 		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
 	</PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="libNOM.map" Version="0.13.2" />
+    <PackageReference Include="libNOM.map" Version="0.13.4" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
