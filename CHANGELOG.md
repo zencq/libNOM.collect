@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file. It uses the
 
 ### Added
 * Now targeting up to .NET 9 as per the [.NET release lifecycle](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
-* New ship and weapon types
+* New ship and weapon types up to **Worlds Part II 5.50**
 
 ### Changed
 * No longer targeting .NET 6 and .NET 7 (still works thanks to .NET Standard)
