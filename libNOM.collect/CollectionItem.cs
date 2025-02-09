@@ -1,4 +1,5 @@
 ﻿using libNOM.map;
+
 using Newtonsoft.Json.Linq;
 
 namespace libNOM.collect;
@@ -278,11 +279,14 @@ public abstract class CollectionItem
             "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTERCLASSICGOLD.SCENE.MBIN" => ShipTypeEnum.FighterClassicGold,
             "MODELS/COMMON/SPACECRAFT/FIGHTERS/FIGHTERSPECIALSWITCH.SCENE.MBIN" => ShipTypeEnum.FighterSpecialSwitch,
             "MODELS/COMMON/SPACECRAFT/FIGHTERS/VRSPEEDER.SCENE.MBIN" => ShipTypeEnum.FighterVrSpeeder,
-            "MODELS/COMMON/SPACECRAFT/FIGHTERS/WRACER.SCENE.MBIN" => ShipTypeEnum.FighterStarbornRunner,
             "MODELS/COMMON/SPACECRAFT/SCIENTIFIC/SCIENTIFIC_PROC.SCENE.MBIN" => ShipTypeEnum.Scientific,
+            "MODELS/COMMON/SPACECRAFT/FIGHTERS/SPOOKSHIP.SCENE.MBIN" => ShipTypeEnum.ScientificBoundaryHerald,
             "MODELS/COMMON/SPACECRAFT/SHUTTLE/SHUTTLE_PROC.SCENE.MBIN" => ShipTypeEnum.Shuttle,
             "MODELS/COMMON/SPACECRAFT/S-CLASS/S-CLASS_PROC.SCENE.MBIN" => ShipTypeEnum.Royal,
+            "MODELS/COMMON/SPACECRAFT/FIGHTERS/WRACER.SCENE.MBIN" => ShipTypeEnum.RoyalStarbornRunner,
+            "MODELS/COMMON/SPACECRAFT/FIGHTERS/WRACERSE.SCENE.MBIN" => ShipTypeEnum.RoyalStarbornPhoenix,
             "MODELS/COMMON/SPACECRAFT/S-CLASS/BIOPARTS/BIOSHIP_PROC.SCENE.MBIN" => ShipTypeEnum.Alien,
+            "MODELS/COMMON/SPACECRAFT/S-CLASS/BIOPARTS/BIOFIGHTER.SCENE.MBIN" => ShipTypeEnum.AlienWraith,
             "MODELS/COMMON/SPACECRAFT/SAILSHIP/SAILSHIP_PROC.SCENE.MBIN" => ShipTypeEnum.Sail,
             "MODELS/COMMON/SPACECRAFT/SENTINELSHIP/SENTINELSHIP_PROC.SCENE.MBIN" => ShipTypeEnum.Robot,
             _ => null,
@@ -296,8 +300,9 @@ public abstract class CollectionItem
             "MODELS/COMMON/WEAPONS/MULTITOOL/SWITCHMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.RifleSwitch,
             "MODELS/COMMON/WEAPONS/MULTITOOL/ROYALMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Royal,
             "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Robot,
-            "MODELS/COMMON/WEAPONS/MULTITOOL/ATLASMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.StaffAtlas,
             "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Staff,
+            "MODELS/COMMON/WEAPONS/MULTITOOL/ATLASMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.StaffAtlas,
+            "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLRUIN.SCENE.MBIN" => WeaponTypeEnum.StaffRuin,
             _ => null,
         };
     }
