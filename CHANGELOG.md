@@ -20,6 +20,9 @@ All notable changes to this project will be documented in this file. It uses the
 * Now targeting up to .NET 9 as per the [.NET release lifecycle](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
 * New ship and weapon types
 
+### Changed
+* No longer targeting .NET 6 and .NET 7 (still works thanks to .NET Standard)
+
 ## 0.1.1 (2024-08-06)
 
 ### Added

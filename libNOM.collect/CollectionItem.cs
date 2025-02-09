@@ -17,7 +17,7 @@ public abstract class CollectionItem
 
     #region Property
 
-    internal Dictionary<string, JToken?> Data { get; set; } = new();
+    internal Dictionary<string, JToken?> Data { get; set; } = [];
 
     public DateTimeOffset DateCreated { get; set; } = DateTimeOffset.Now;
 
@@ -307,7 +307,7 @@ public abstract class CollectionItem
         };
     }
 
-    // Overrideable to add additional/missing data.
+    // Overridable to add additional/missing data.
     internal virtual void Link(JObject json, int index)
     {
         _index = index;
