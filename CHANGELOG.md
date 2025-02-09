@@ -14,6 +14,12 @@ All notable changes to this project will be documented in this file. It uses the
 ### Fixed
 ### Security
 
+## 0.1.2 (2025-02-09)
+
+### Added
+* Now targeting up to .NET 9 as per the [.NET release lifecycle](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
+* New ship and weapon types
+
 ## 0.1.1 (2024-08-06)
 
 ### Added

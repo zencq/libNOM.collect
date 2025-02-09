@@ -60,7 +60,7 @@
 
   <!-- Package -->
 	<PropertyGroup Label="General">
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <Authors>cengelha</Authors>
     <Description>Provides backup and restore functionalities for all kinds of collections in the game No Man's Sky.</Description>
 		<Copyright>Copyright (c) Christian Engelhardt 2021</Copyright>
