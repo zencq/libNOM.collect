@@ -1,26 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- Application -->
-  <PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-    <IsTestProject>true</IsTestProject>
-  </PropertyGroup>
+	<!-- Application -->
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
 
-  <!-- Global Usings -->
-  <PropertyGroup>
-        <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+	<!-- Global Usings -->
+	<PropertyGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
 	<!-- Build -->
 	<PropertyGroup Label="General">
 		<Nullable>enable</Nullable>
-    <IsPackable>false</IsPackable>
+	<IsPackable>false</IsPackable>
 	</PropertyGroup>
 	<PropertyGroup Label="Publish">
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
-<PropertyGroup Label="Advanced">
-		<LangVersion>12.0</LangVersion>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+	<PropertyGroup Label="Advanced">
+		<LangVersion>13.0</LangVersion>
 		<Deterministic>True</Deterministic>
 	</PropertyGroup>
 
@@ -36,6 +36,10 @@
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<IsPublishable>False</IsPublishable>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		<IsPublishable>False</IsPublishable>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<IsPublishable>False</IsPublishable>
@@ -48,25 +52,29 @@
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<IsPublishable>False</IsPublishable>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0|AnyCPU'">
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		<IsPublishable>False</IsPublishable>
+	</PropertyGroup>
 
 	<!-- Code Analysis -->
 	<PropertyGroup>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 	</PropertyGroup>
 
-  <!-- Dependencies -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.7.3" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.7.3" />
-    <PackageReference Include="coverlet.collector" Version="6.0.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<!-- Dependencies -->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="3.7.3" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.7.3" />
+		<PackageReference Include="coverlet.collector" Version="6.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\libNOM.collect\libNOM.collect.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\libNOM.collect\libNOM.collect.csproj" />
+	</ItemGroup>
 
 </Project>
