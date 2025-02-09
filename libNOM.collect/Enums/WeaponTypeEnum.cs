@@ -11,13 +11,18 @@ public enum WeaponTypeEnum
 {
     Pistol,
     Rifle,
-    [Description("Infinite Neon Mark XXII")]
     RifleSwitch,
     Pristine,
     Alien,
     Royal,
     Robot,
+    //RobotB,
     Atlas,
+    //AtlasYellow,
+    //AtlasBlue,
     Staff,
     StaffAtlas,
+    StaffRuin,
+
+    Unknown,
 }

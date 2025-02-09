@@ -12,16 +12,23 @@ internal enum ShipTypeEnum
     Freighter,
     Dropship,
     Fighter,
-    [Description("Golden Vector")]
     FighterClassicGold,
-    [Description("Horizon Vector NX")]
     FighterSpecialSwitch,
     FighterVrSpeeder,
+    [Obsolete("Use RoyalStarbornRunner instead.")]
     FighterStarbornRunner,
+    [Obsolete("Use ScientificBoundaryHerald instead.")]
+    FighterBoundaryHerald,
     Scientific,
+    ScientificBoundaryHerald,
     Shuttle,
     Royal,
+    RoyalStarbornRunner,
+    RoyalStarbornPhoenix,
     Alien,
+    AlienWraith,
     Sail,
     Robot,
+
+    Unknown,
 }
