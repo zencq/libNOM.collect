@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         # November, 2026 / May, 2026
-        framework: [{dotnet: 'net8.0', version: '8.0.x'}, {dotnet: 'net9.0', version: '9.0.x'}]
+        framework: [{dotnet: 'net8.0', version: '9.0.x'}, {dotnet: 'net9.0', version: '9.0.x'}]
         os: ['windows-latest', 'macos-latest', 'ubuntu-latest']
     runs-on: ${{ matrix.os }}
     steps:
