@@ -4,9 +4,9 @@
     ".NETStandard,Version=v2.0": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.5, )",
-        "resolved": "0.13.5",
-        "contentHash": "puaMk8OQEYYw4nN/d9MRmWlS8SzW4nzb5gFCSM8dE1Szjx0S36W7C7s/cPyJmPAqJ6jLU931ofXYPsJppoXvjA==",
+        "requested": "[0.13.6, )",
+        "resolved": "0.13.6",
+        "contentHash": "xpf9/l5dpGC7CN0+DleUG8/cqvddnnxpgzw/4yyNYUrdpuTlHvDBE/Zpvuod4e+vh2OTZcmIOpmcSP6ASwujEw==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "14.0.0"
@@ -61,9 +61,9 @@
     ".NETStandard,Version=v2.1": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.5, )",
-        "resolved": "0.13.5",
-        "contentHash": "puaMk8OQEYYw4nN/d9MRmWlS8SzW4nzb5gFCSM8dE1Szjx0S36W7C7s/cPyJmPAqJ6jLU931ofXYPsJppoXvjA==",
+        "requested": "[0.13.6, )",
+        "resolved": "0.13.6",
+        "contentHash": "xpf9/l5dpGC7CN0+DleUG8/cqvddnnxpgzw/4yyNYUrdpuTlHvDBE/Zpvuod4e+vh2OTZcmIOpmcSP6ASwujEw==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "14.0.0"
@@ -104,9 +104,9 @@
     "net8.0": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.5, )",
-        "resolved": "0.13.5",
-        "contentHash": "puaMk8OQEYYw4nN/d9MRmWlS8SzW4nzb5gFCSM8dE1Szjx0S36W7C7s/cPyJmPAqJ6jLU931ofXYPsJppoXvjA==",
+        "requested": "[0.13.6, )",
+        "resolved": "0.13.6",
+        "contentHash": "xpf9/l5dpGC7CN0+DleUG8/cqvddnnxpgzw/4yyNYUrdpuTlHvDBE/Zpvuod4e+vh2OTZcmIOpmcSP6ASwujEw==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "14.0.0"
@@ -147,9 +147,9 @@
     "net9.0": {
       "libNOM.map": {
         "type": "Direct",
-        "requested": "[0.13.5, )",
-        "resolved": "0.13.5",
-        "contentHash": "puaMk8OQEYYw4nN/d9MRmWlS8SzW4nzb5gFCSM8dE1Szjx0S36W7C7s/cPyJmPAqJ6jLU931ofXYPsJppoXvjA==",
+        "requested": "[0.13.6, )",
+        "resolved": "0.13.6",
+        "contentHash": "xpf9/l5dpGC7CN0+DleUG8/cqvddnnxpgzw/4yyNYUrdpuTlHvDBE/Zpvuod4e+vh2OTZcmIOpmcSP6ASwujEw==",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Octokit": "14.0.0"
