@@ -297,11 +297,12 @@ public abstract class CollectionItem
     {
         return resource switch
         {
+            "MODELS/COMMON/WEAPONS/MULTITOOL/ATLASMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Atlas,
             "MODELS/COMMON/WEAPONS/MULTITOOL/SWITCHMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.RifleSwitch,
             "MODELS/COMMON/WEAPONS/MULTITOOL/ROYALMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Royal,
             "MODELS/COMMON/WEAPONS/MULTITOOL/SENTINELMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Robot,
             "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Staff,
-            "MODELS/COMMON/WEAPONS/MULTITOOL/ATLASMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.StaffAtlas,
+            "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLATLAS.SCENE.MBIN" => WeaponTypeEnum.StaffAtlas,
             "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLRUIN.SCENE.MBIN" => WeaponTypeEnum.StaffRuin,
             _ => null,
         };
