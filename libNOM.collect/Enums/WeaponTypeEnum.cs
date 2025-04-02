@@ -23,6 +23,7 @@ public enum WeaponTypeEnum
     Staff,
     StaffAtlas,
     StaffRuin,
+    StaffBone,
 
     Unknown,
 }

@@ -304,6 +304,7 @@ public abstract class CollectionItem
             "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOL.SCENE.MBIN" => WeaponTypeEnum.Staff,
             "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLATLAS.SCENE.MBIN" => WeaponTypeEnum.StaffAtlas,
             "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLRUIN.SCENE.MBIN" => WeaponTypeEnum.StaffRuin,
+            "MODELS/COMMON/WEAPONS/MULTITOOL/STAFFMULTITOOLBONE.SCENE.MBIN" => WeaponTypeEnum.StaffBone,
             _ => null,
         };
     }
