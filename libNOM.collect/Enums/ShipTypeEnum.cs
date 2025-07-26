@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace libNOM.collect.Enums;
+﻿namespace libNOM.collect.Enums;
 
 
 /// <summary>

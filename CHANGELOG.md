@@ -4,11 +4,12 @@ All notable changes to this project will be documented in this file. It uses the
 [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) principles and
 [Semantic Versioning](https://semver.org/).
 
-## Unreleased
+## Unreleased (0.1.4)
 
 ### Known Issues
 ### Added
 ### Changed
+* Bump *libNOM.map* from 0.13.6 to 0.13.7
 ### Deprecated
 ### Removed
 ### Fixed
