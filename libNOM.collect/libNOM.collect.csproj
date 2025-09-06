@@ -48,7 +48,7 @@
 
   <!-- Package -->
 	<PropertyGroup Label="General">
-    <Version>0.1.4-beta.7</Version>
+    <Version>0.1.4-beta.8</Version>
     <Authors>cengelha</Authors>
     <Description>Provides backup and restore functionalities for all kinds of collections in the game No Man's Sky.</Description>
 		<Copyright>Copyright (c) Christian Engelhardt 2021</Copyright>
@@ -85,7 +85,7 @@
 		<RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
 	</PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="libNOM.map" Version="0.13.7" />
+    <PackageReference Include="libNOM.map" Version="0.13.8" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
