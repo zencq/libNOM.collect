@@ -86,6 +86,7 @@ public class StarshipCollection : Collection
                 { "Ship", jObject },
                 { "UseLegacyColours", false },
                 { "Colours", null },
+                { "PersistentPlayerBases", null }, // TODO: added?
             },
         };
     }
@@ -106,6 +107,7 @@ public class StarshipCollection : Collection
                 { "Ship", jObject.SelectToken("Ship.@Cs") },
                 { "UseLegacyColours", jObject.SelectToken("Ship.4hl") },
                 { "Colours", jObject.SelectToken("Colours") ?? new JArray() }, // custom addition by Mjstral (MetaIdea)
+                { "PersistentPlayerBases", null }, // TODO: added?
             },
         };
     }
@@ -128,6 +130,7 @@ public class StarshipCollection : Collection
                 { "Ship", jObject.SelectToken("Data.Ship") },
                 { "UseLegacyColours", jObject.SelectToken("Data.UseLegacyColours") },
                 { "Colours", jObject.SelectToken("Data.Colours") },
+                { "PersistentPlayerBases", jObject.SelectToken("Data.PersistentPlayerBases") },
             },
         };
     }
@@ -215,6 +218,7 @@ public class Starship : CollectionItem
                 { "Ship", json.SelectDeepClonedToken(JsonPath) },
                 { "UseLegacyColours", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.ShipUsesLegacyColours[{_index}]") },
                 { "Colours", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.CharacterCustomisationData[{_customisationIndex}].CustomData.Colours") },
+                { "PersistentPlayerBases", json.SelectDeepClonedToken($"BaseContext.PlayerStateData.PersistentPlayerBases[?(@.UserData == {_index} && @.BaseType.PersistentBaseTypes == 'PlayerShipBase')]") },
             };
         }
         else
@@ -224,6 +228,7 @@ public class Starship : CollectionItem
                 { "Ship", json.SelectDeepClonedToken(JsonPath) },
                 { "UseLegacyColours", json.SelectDeepClonedToken($"vLc.6f=.4hl[{_index}]") },
                 { "Colours", json.SelectDeepClonedToken($"vLc.6f=.l:j[{_customisationIndex}].wnR.Aak") },
+                { "PersistentPlayerBases", json.SelectDeepClonedToken($"vLc.6f=.F?0[?(@.CVX == {_index} && @.peI.DPp == 'PlayerShipBase')]") },
             };
         }
     }
@@ -341,6 +346,45 @@ public class Starship : CollectionItem
             else
             {
                 json["vLc"]!["6f="]!["l:j"]![customisationIndex]!["wnR"]!["Aak"] = colours;
+            }
+        }
+        if (Data.TryGetValue("PersistentPlayerBases", out var persistentPlayerBases) && persistentPlayerBases is not null)
+        {
+            if (_useMapping)
+            {
+                // set index to the one we import to
+                persistentPlayerBases["UserData"] = index;
+
+                var replacedCorvette = json.SelectToken($"BaseContext.PlayerStateData.PersistentPlayerBases[?(@.UserData == {index} && @.BaseType.PersistentBaseTypes == 'PlayerShipBase')]");                
+                if (replacedCorvette != null)
+                {
+                    var i = int.Parse(replacedCorvette.Path.Split('[').Last().TrimEnd(']'));
+                    json["BaseContext"]!["PlayerStateData"]!["PersistentPlayerBases"]![i] = persistentPlayerBases;
+                }
+                else
+                {
+                    // add base part to the save
+                    var playerBases = (JArray)(json["BaseContext"]!["PlayerStateData"]!["PersistentPlayerBases"]!);
+                    playerBases.Add(persistentPlayerBases);
+                }
+            }
+            else
+            {
+                // set index to the one we import to
+                persistentPlayerBases["4U6"] = index;
+
+                var replacedCorvette = json.SelectToken($"vLc.6f=.F?0[?(@.4U6 == {index} && @.peI.DPp == 'PlayerShipBase')]");
+                if (replacedCorvette != null)
+                {
+                    var i = int.Parse(replacedCorvette.Path.Split('[').Last().TrimEnd(']'));
+                    json["vLc"]!["6f="]!["F?0"]![i] = persistentPlayerBases;
+                }
+                else
+                {
+                    // add base part to the save
+                    var playerBases = (JArray)(json["vLc"]!["6f="]!["F?0"]!);
+                    playerBases.Add(persistentPlayerBases);
+                }
             }
         }
     }

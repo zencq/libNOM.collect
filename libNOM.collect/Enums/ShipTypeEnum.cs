@@ -27,6 +27,7 @@ internal enum ShipTypeEnum
     AlienWraith,
     Sail,
     Robot,
+    Corvette,
 
     Unknown,
 }

@@ -289,6 +289,7 @@ public abstract class CollectionItem
             "MODELS/COMMON/SPACECRAFT/S-CLASS/BIOPARTS/BIOFIGHTER.SCENE.MBIN" => ShipTypeEnum.AlienWraith,
             "MODELS/COMMON/SPACECRAFT/SAILSHIP/SAILSHIP_PROC.SCENE.MBIN" => ShipTypeEnum.Sail,
             "MODELS/COMMON/SPACECRAFT/SENTINELSHIP/SENTINELSHIP_PROC.SCENE.MBIN" => ShipTypeEnum.Robot,
+            "MODELS/COMMON/SPACECRAFT/BIGGS/BIGGS.SCENE.MBIN" => ShipTypeEnum.Corvette,
             _ => null,
         };
     }
