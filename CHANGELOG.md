@@ -4,16 +4,23 @@ All notable changes to this project will be documented in this file. It uses the
 [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) principles and
 [Semantic Versioning](https://semver.org/).
 
-## Unreleased (0.1.4)
+## Unreleased
 
 ### Known Issues
 ### Added
 ### Changed
-* Bump *libNOM.map* from 0.13.6 to 0.13.7
 ### Deprecated
 ### Removed
 ### Fixed
 ### Security
+
+## 0.1.4 (2025-09-06)
+
+### Added
+* Support for Corvette starship type from **Voyagers 6.00**
+
+### Changed
+* Bump *libNOM.map* from 0.13.6 to 0.13.8
 
 ## 0.1.3 (2025-04-02)
 
